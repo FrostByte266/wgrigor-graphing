@@ -18,7 +18,9 @@ private slots:
     void setRange(const double& xyRange);
     void plot();
     void clear();
-    void on_pushButton_clicked();
+    void on_doubleSpinBox_valueChanged(double arg1);
+
+    void on_doubleSpinBox_2_valueChanged(double arg1);
 
 private:
     Ui::MainWindow *ui;

@@ -33,18 +33,33 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <double>0.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>1000.000000000000000</double>
+    </property>
+    <property name="value">
+     <double>2.000000000000000</double>
+    </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>400</y>
-      <width>93</width>
-      <height>28</height>
+      <x>950</x>
+      <y>410</y>
+      <width>62</width>
+      <height>22</height>
      </rect>
     </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="minimum">
+     <double>1.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>1000.000000000000000</double>
+    </property>
+    <property name="value">
+     <double>10.000000000000000</double>
     </property>
    </widget>
   </widget>
