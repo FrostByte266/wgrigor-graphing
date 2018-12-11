@@ -19,8 +19,6 @@ private slots: //Notifies the compiler about functions that will be defined and 
     void placeYint();
     void placeXint();
     double getSlope();
-    void on_submitPlot_clicked();
-    void on_submitClear_clicked();
     void setSlope();
     const QString calcEquation();
     void setEquation();
@@ -28,7 +26,10 @@ private slots: //Notifies the compiler about functions that will be defined and 
     void setRange(const double &xyrange);
     void clearGraph();
     void log();
-    void on_submitRange_clicked();
+    void on_varValXincpt_valueChanged(double arg1);
+    void on_varValYincpt_valueChanged(double arg1);
+
+    void on_varValRange_valueChanged(double arg1);
 
 private: //Notifies the compiler about variables that will be defined and used, they are actually defined in mainwindow.cpp
     Ui::MainWindow *ui; //This is just some shorthad for coding (insitead of wiritng Ui::Mainwindow::... to access ui functions, you can write: ui->...

@@ -24,24 +24,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="submitPlot">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>550</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Plot!</string>
-    </property>
-   </widget>
    <widget class="QDoubleSpinBox" name="varValYincpt">
     <property name="geometry">
      <rect>
@@ -127,24 +109,6 @@
     </property>
     <property name="text">
      <string>X-intercept</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="submitClear">
-    <property name="geometry">
-     <rect>
-      <x>760</x>
-      <y>550</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Clear</string>
     </property>
    </widget>
    <widget class="QLabel" name="slopeLabel">
@@ -276,24 +240,6 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="submitRange">
-    <property name="geometry">
-     <rect>
-      <x>1180</x>
-      <y>600</y>
-      <width>131</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Set Range</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -320,7 +266,7 @@
   <customwidget>
    <class>QCustomPlot</class>
    <extends>QWidget</extends>
-   <header location="global">qcustomplot.h</header>
+   <header>qcustomplot.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

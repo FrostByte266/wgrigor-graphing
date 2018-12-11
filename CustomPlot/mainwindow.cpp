@@ -47,27 +47,11 @@ void MainWindow::placeXint()
     ui->customPlot->replot();
 }
 
-void MainWindow::on_submitPlot_clicked()
-{
-    clearGraph();
-    placeXint();
-    placeYint();
-    addPoints(xyrangeAt);
-    addPoints(-xyrangeAt);
-    setSlope();
-    setEquation();
-    log();
-}
-
-void MainWindow::on_submitClear_clicked()
-{
-    clearGraph();
-}
 
 double MainWindow::getSlope()
 {
     const double slope = (yincpt)/(xincpt);
-    return slope;
+    return -slope;
 }
 
 void MainWindow::setSlope()
@@ -91,7 +75,7 @@ void MainWindow::addPoints(const double& xval){
     const double yval = (getSlope()*xval)+yincpt;
     x.append(xval);
     y.append(yval);
-    ui->customPlot->graph(0)->addData(x, y);
+    ui->customPlot->graph(0)->setData(x, y);
     ui->customPlot->update();
     ui->customPlot->replot();
 }
@@ -101,22 +85,6 @@ void MainWindow::setRange(const double& xyrange){
     xyrangeAt=xyrange;
 }
 
-void MainWindow::on_submitRange_clicked()
-{
-    MainWindow::setRange(ui->varValRange->QDoubleSpinBox::value());
-    if(ui->varValXincpt->QDoubleSpinBox::value() != 0.0 || ui->varValYincpt->QDoubleSpinBox::value() !=0.0){
-        clearGraph();
-        placeXint();
-        placeYint();
-        setSlope();
-        setEquation();
-        addPoints(xyrangeAt);
-        addPoints(-xyrangeAt);
-        log();
-    }
-
-    ui->customPlot->replot();
-}
 void MainWindow::clearGraph(){
     x.clear();
     y.clear();
@@ -130,4 +98,42 @@ void MainWindow::clearGraph(){
 void MainWindow::log(){
     for(int i = 0; i <= x.size(); i++)
         std::cerr << x.at(i) << " , " << y.at(i) << std::endl;
+}
+
+void MainWindow::on_varValXincpt_valueChanged(double arg1)
+{
+    clearGraph();
+    placeYint();
+    placeXint();
+    addPoints(-xyrangeAt);
+    addPoints(xyrangeAt);
+    setSlope();
+    setEquation();
+    log();
+}
+
+void MainWindow::on_varValYincpt_valueChanged(double arg1)
+{
+    clearGraph();
+    placeYint();
+    placeXint();
+    addPoints(-xyrangeAt);
+    addPoints(xyrangeAt);
+    setSlope();
+    setEquation();
+    log();
+}
+
+void MainWindow::on_varValRange_valueChanged(double arg1)
+{
+    clearGraph();
+    setRange(arg1);
+    clearGraph();
+    placeYint();
+    placeXint();
+    addPoints(-xyrangeAt);
+    addPoints(xyrangeAt);
+    setSlope();
+    setEquation();
+    log();
 }
