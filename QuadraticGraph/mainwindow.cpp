@@ -60,18 +60,6 @@ void MainWindow::plot(void) noexcept{
     setVertex();
 }
 
-void MainWindow::on_plotGraph_clicked(void) noexcept
-{
-    //Make sure the user has a value in the A box
-    if(ui->valueA->QDoubleSpinBox::value()!=0.0){
-        plot();
-    }else{
-        //If a is empty (set to 0) then do not plot and generate a warning box
-        QMessageBox warning;
-        warning.critical(nullptr, "Error!", "You must provide a value for A!");
-    }
-
-}
 void MainWindow::clear(void) noexcept{
     //Remove the data from the x and y vectors
     x.clear();
@@ -84,13 +72,6 @@ void MainWindow::clear(void) noexcept{
     ui->vertexData->setText(nullptr);
 }
 
-void MainWindow::on_clearGraph_clicked(void) noexcept
-{
-    ui->valueA->setValue(1.00);
-    ui->valueB->setValue(0.00);
-    ui->valueC->setValue(0.00);
-    clear();
-}
 
 void MainWindow::setEquation(void) noexcept{
     //Get the data the user entered into the UI
@@ -103,13 +84,6 @@ void MainWindow::setEquation(void) noexcept{
     ui->equationData->setText(equation);
 }
 
-void MainWindow::on_setRange_clicked() noexcept
-{
-    //Set the range and then replot the curve so it reaches the ends of the range
-    setRange(ui->valueRange->QDoubleSpinBox::value());
-    clear();
-    plot();
-}
 
 const QString MainWindow::getVertex(void) noexcept{
     //Get the values the user inputs
@@ -142,16 +116,41 @@ void MainWindow::invertY() noexcept{
     plot();
 }
 
-void MainWindow::on_invertYbtn_clicked()
+void MainWindow::on_invertYbtn_clicked() noexcept
 {
     if (!x.empty() || !y.empty()){ //Only flip if there is data on the graph
         invertY();
     }
 }
 
-void MainWindow::on_invertXbtn_clicked()
+void MainWindow::on_invertXbtn_clicked() noexcept
 {
     if (!x.empty() || !y.empty()){ //Only flip if there is data on the graph
         invertX();
     }
+}
+
+void MainWindow::on_valueRange_valueChanged(double arg1) noexcept
+{
+    setRange(arg1);
+    clear();
+    plot();
+}
+
+void MainWindow::on_valueA_valueChanged(double arg1) noexcept
+{
+    clear();
+    plot();
+}
+
+void MainWindow::on_valueB_valueChanged(double arg1) noexcept
+{
+    clear();
+    plot();
+}
+
+void MainWindow::on_valueC_valueChanged(double arg1) noexcept
+{
+    clear();
+    plot();
 }
