@@ -21,17 +21,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    //Destructor
     delete ui;
 }
 
-void MainWindow::setRange(const double& xyrange) noexcept{
+void MainWindow::setRange(const double& xyrange) {
     //Set the range to the positive and negative values of the value passed to the function
     ui->customPlot->xAxis->setRange(-xyrange, xyrange);
     ui->customPlot->yAxis->setRange(-xyrange, xyrange);
     //Set a global variable to the range the graph has
     xyrangeAt=xyrange;
 }
-void MainWindow::plot(void) noexcept{
+void MainWindow::plot(void) {
     //Clear old data, and calculate new equation and vertex
     clear();
     setEquation();
@@ -40,7 +41,7 @@ void MainWindow::plot(void) noexcept{
     const double b = ui->valueB->QDoubleSpinBox::value();
     const double c = ui->valueC->QDoubleSpinBox::value();
     //Iterate through the vector and assign the points of the curve
-    const double iterations = xyrangeAt*100+1; //For proper disaply, the number of points generated is range times 100
+    const double iterations = xyrangeAt*100; //For proper disaply, the number of points generated is range times 100
     for (int i=0; i < iterations; ++i) //Recursively generate x and y pairs
     {
         if (i == 0){ //Because the we access index i-1, we need to set and initial value to push the index to 1
@@ -60,11 +61,11 @@ void MainWindow::plot(void) noexcept{
     setVertex();
 }
 
-void MainWindow::clear(void) noexcept{
-    //Remove the data from the x and y vectors
+void MainWindow::clear(void) {
+    //Clear data container
     x.clear();
     y.clear();
-    //Replot with the empty vector
+    //Replot with the empty data container
     ui->customPlot->graph(0)->setData(x, y);
     ui->customPlot->replot();
     //Set the text on the equation to nothing
@@ -73,7 +74,7 @@ void MainWindow::clear(void) noexcept{
 }
 
 
-void MainWindow::setEquation(void) noexcept{
+void MainWindow::setEquation(void) {
     //Get the data the user entered into the UI
     const QString a = QString::number(ui->valueA->QDoubleSpinBox::value());
     const QString b = QString::number(ui->valueB->QDoubleSpinBox::value());
@@ -85,7 +86,7 @@ void MainWindow::setEquation(void) noexcept{
 }
 
 
-const QString MainWindow::getVertex(void) noexcept{
+const QString MainWindow::getVertex(void) {
     //Get the values the user inputs
     const double a = ui->valueA->QDoubleSpinBox::value();
     const double b = ui->valueB->QDoubleSpinBox::value();
@@ -98,58 +99,61 @@ const QString MainWindow::getVertex(void) noexcept{
     return result;
 }
 
-void MainWindow::setVertex(void) noexcept{
+void MainWindow::setVertex(void) {
     //Get the vertex and then set the label text
     const QString vertex = getVertex();
     ui->vertexData->setText(vertex);
 }
 
-void MainWindow::invertX() noexcept{
+void MainWindow::invertX() {
     //Invert the "B" field and replot
     ui->valueB->setValue(-(ui->valueB->QDoubleSpinBox::value()));
     plot();
 }
 
-void MainWindow::invertY() noexcept{
+void MainWindow::invertY() {
     //Invert the "A" field and replot
     ui->valueA->setValue(-(ui->valueA->QDoubleSpinBox::value()));
     plot();
 }
 
-void MainWindow::on_invertYbtn_clicked() noexcept
+void MainWindow::on_invertYbtn_clicked()
 {
     if (!x.empty() || !y.empty()){ //Only flip if there is data on the graph
         invertY();
     }
 }
 
-void MainWindow::on_invertXbtn_clicked() noexcept
+void MainWindow::on_invertXbtn_clicked()
 {
     if (!x.empty() || !y.empty()){ //Only flip if there is data on the graph
         invertX();
     }
 }
 
-void MainWindow::on_valueRange_valueChanged(double arg1) noexcept
+
+//Replot whenever any user input field changed
+
+void MainWindow::on_valueRange_valueChanged(double arg1)
 {
     setRange(arg1);
     clear();
     plot();
 }
 
-void MainWindow::on_valueA_valueChanged(double arg1) noexcept
+void MainWindow::on_valueA_valueChanged(double arg1)
 {
     clear();
     plot();
 }
 
-void MainWindow::on_valueB_valueChanged(double arg1) noexcept
+void MainWindow::on_valueB_valueChanged(double arg1)
 {
     clear();
     plot();
 }
 
-void MainWindow::on_valueC_valueChanged(double arg1) noexcept
+void MainWindow::on_valueC_valueChanged(double arg1)
 {
     clear();
     plot();

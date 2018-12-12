@@ -15,20 +15,20 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private slots: //Declaration of functions
-    void setRange(const double &xyrange) noexcept;
-    void plot(void) noexcept;
-    void clear(void) noexcept;
-    void setEquation(void) noexcept;
-    const QString getVertex(void) noexcept;
-    void setVertex(void) noexcept;
-    void invertX() noexcept;
-    void invertY() noexcept;
-    void on_invertYbtn_clicked() noexcept;
-    void on_invertXbtn_clicked() noexcept;
-    void on_valueRange_valueChanged(double arg1) noexcept;
-    void on_valueA_valueChanged(double arg1) noexcept;
-    void on_valueB_valueChanged(double arg1) noexcept;
-    void on_valueC_valueChanged(double arg1) noexcept;
+    void setRange(const double &xyrange) ;
+    void plot(void);
+    void clear(void);
+    void setEquation(void);
+    const QString getVertex(void);
+    void setVertex(void);
+    void invertX();
+    void invertY();
+    void on_invertYbtn_clicked();
+    void on_invertXbtn_clicked();
+    void on_valueRange_valueChanged(double arg1);
+    void on_valueA_valueChanged(double arg1);
+    void on_valueB_valueChanged(double arg1);
+    void on_valueC_valueChanged(double arg1);
 
 private: //Declaration of internal variables
     Ui::MainWindow *ui;

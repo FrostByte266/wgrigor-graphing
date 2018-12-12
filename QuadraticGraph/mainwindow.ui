@@ -160,24 +160,6 @@
      <string>Range:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="setRange">
-    <property name="geometry">
-     <rect>
-      <x>1120</x>
-      <y>530</y>
-      <width>81</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Set</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="labelA">
     <property name="geometry">
      <rect>
