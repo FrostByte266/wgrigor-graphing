@@ -13,6 +13,6 @@ of the QCustomPlot library, and are included there in order to compile the progr
 called: "mainwindow.cpp".
 
 ### Credits: 
-[Qt (Library, UI designer, and IDE](https://www.qt.io/)
+[Qt (Library, UI designer, and IDE)](https://www.qt.io/)
 
 [QCustomPlot (Library)](https://www.qcustomplot.com/)
